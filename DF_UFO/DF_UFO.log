@@ -1,0 +1,89 @@
+# This file was automatically created by FeynRules 2.3.49
+# Mathematica version: 12.3.1 for Mac OS X ARM (64-bit) (July 24, 2021)
+# Date: Mon 10 Nov 2025 23:39:01
+
+
+# 
+# This is the logfile for the model DF
+
+# Authors: YC, XZ
+# Model version: 0.1
+# Checking the Quantum numbers
+   * Electric charge defined.
+# Checking the Lagrangians
+   * All Lagrangians are ok.
+#
+# Particle definitions
+#
+
+   * No particles removed. All particles correspond to GenInt setup.
+
+# Automatically assigned PDG numbers
+   * Assigned PDG number 9000001 to particle Snu
+   * Assigned PDG number 9000002 to particle Proton
+   * Assigned PDG number 9000003 to particle Nu
+   * Assigned PDG number 9000004 to particle s1
+
+
+# Compulsory PDG codes:
+   * Class SM leptons complete.
+   * Class SM neutrinos incomplete. 12, 14, 16 missing.
+   * Class SM quarks incomplete. 1, 2, 3, 4, 5, 6 missing.
+   * Class SM gauge bosons incomplete. 21, 23, 24 missing.
+#
+# Parameter definitions
+#
+
+   * Parameter Zm has no value. Default value 1 assigned.
+   * Parameter ZA has no value. Default value 1 assigned.
+   * Parameter Zpsi has no value. Default value 1 assigned.
+   * Parameter Zxi has no value. Default value 1 assigned.
+   * Parameter Zg has no value. Default value 1 assigned.
+
+
+# Vertices
+   * Calling FeynmanRules for 1 Lagrangians.
+   * Number of classes vertices: 5
+   * Number of flavored vertices: 9
+   * Saved vertices in InterfaceRun[ 1 ].
+   * Checked QNumber conservation.
+      - Quantum number LeptonNumber conserved in all vertices.
+      - Quantum number Q conserved in all vertices.
+   * particles.py written.
+   * parameters.py written.
+#
+# Vertex definitions
+#
+
+   * 9 vertices written.
+   * vertices.py written.
+#
+# Lorentz structure definitions
+#
+
+   * 3 lorentz structures written.
+   * lorentz.py written.
+#
+# Coupling definitions
+#
+
+   * 2 couplings written.
+   * couplings.py written.
+#
+# Coupling order definitions
+#
+
+   * 0 couplings orders written.
+   * coupling_orders.py written.
+#
+# Decay definitions
+#
+
+   * 3 decays written.
+   * decay.py not written
+#
+# CTCoupling definitions
+#
+
+   * 0 CTcouplings written.
+   * CT_couplings.py written.

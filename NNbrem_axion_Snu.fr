@@ -1,0 +1,167 @@
+M$ModelName = "DF";
+
+FeynmanGauge=False;
+
+M$Information = {
+	Authors      -> {"YC","XZ"},
+    Version      -> "0.1"
+};
+
+IndexRange[Index[Generation]] = Range[3];
+IndexStyle[Generation, f];
+
+
+M$Parameters = Join[
+    {
+        ee == {
+            ParameterType -> Internal,
+            Value         -> 0.3028619,
+            InteractionOrder -> {QED,1},
+            Description   ->  "Electromagnetic coupling constant (<->1/137)"
+        },
+        muNuN == {
+            ParameterType    -> External,
+            Value            -> 1*10^-6,
+            InteractionOrder -> {QED, 1},
+            Description      -> "nu-N transition magnetic dipole"
+        },
+        Znuc == {
+            ParameterType -> External,
+            BlockName     -> DPINPUTS,
+            OrderBlock    -> 3,
+            Value         -> 74,
+            TeX           -> Subscript[Z,nuc],
+            Description   -> "Atomic order of Nuclei"
+        },
+        anuc == {
+            ParameterType -> Internal,
+            Value         -> 111 * Znuc^(-1/3) / Me,
+            Description   -> "Nuclear parameter a = 51739.8 "
+        },
+        dnuc == {
+            ParameterType -> External,
+            BlockName     -> DPINPUTS,
+            OrderBlock    -> 5,
+            Value         -> 0.005069502007561487,
+            Description   -> "The second finite nuclear size d = 0.164 * A^-2/3"
+        }
+    },
+    (# == {
+        ParameterType -> External,
+        InteractionOrder -> {QED,1}
+    }) & /@ {Zm, ZA,Zpsi, Zxi, Zg}
+]
+
+M$GaugeGroups = {
+	U1 == {
+		Abelian           -> True,
+		CouplingConstant  -> ee,
+		GaugeBoson        -> A,
+		Charge            -> Q
+	}
+
+};
+
+
+
+M$ClassesDescription = {
+
+    F[1] == {
+        ClassName-> Snu,
+        SelfConjugate    -> False,
+        Mass             -> {Msnu, 0}, 
+        Width            -> 0, 
+        QuantumNumbers   -> {LeptonNumber -> 1},
+        PropagatorLabel  -> "Snu",
+        PropagatorType   -> D,
+	    PropagatorType   -> Straight,
+	    PropagatorArrow  -> Forward,
+        FullName         -> "Snu"
+    },
+
+    F[2] == {
+    	ClassName        -> l,
+    	ClassMembers     -> {e, mu, ta},
+    	SelfConjugate    -> False,
+    	Indices          -> {Index[Generation]},
+    	FlavorIndex      -> Generation,
+    	Mass             -> {Ml, {Me,5.11*^-4}, {MMU,0.10566}, {MTA,1.777}},
+    	Width            -> 0,
+    	QuantumNumbers   -> {Q -> 1, LeptonNumber -> 1},
+    	PropagatorLabel  -> {"l", "e", "mu", "ta"},
+        PDG              -> {11, 13, 15},
+    	PropagatorType   -> Straight,
+    	PropagatorArrow  -> Forward
+    },
+
+
+    F[5] == {
+        ClassName-> Proton,
+        SelfConjugate    -> False,
+        Mass             -> {Mproton, 171.0}, 
+        Width            -> 0, 
+	    QuantumNumbers   -> {Q -> 1},
+        PropagatorLabel  -> "Proton",
+        PropagatorType   -> D,
+	    PropagatorType   -> Straight,
+	    PropagatorArrow  -> Forward,
+        FullName         -> "Proton"
+    },
+
+
+
+
+    F[6] == {
+        ClassName-> Nu,
+        SelfConjugate    -> False,
+        Mass             -> {MNu, 0}, 
+        Width            -> 0, 
+        QuantumNumbers   -> {LeptonNumber -> 1},
+        PropagatorLabel  -> "Nu",
+        PropagatorType   -> D,
+	    PropagatorType   -> Straight,
+	    PropagatorArrow  -> Forward,
+        FullName         -> "Nu"
+    },
+
+
+    V[1] == {
+        ClassName        -> A,
+    	SelfConjugate    -> True,
+        Mass            -> 0,
+        Width           -> 0,
+        ParticleName    -> "A",
+        PDG             -> 22,
+    	PropagatorLabel  -> "\\gamma",
+    	PropagatorType   -> W,
+    	PropagatorArrow  -> None,
+        FullName    -> "A"
+    },
+    
+
+    S[1] == {
+        ClassName       -> s1,
+        SelfConjugate   -> True,
+        Mass            -> {Mds, 1},
+        Width           -> 0,
+        ParticleName    -> "s1",
+        PropagatorLabel -> "s1"
+    }
+
+};
+
+FeynmanGauge = True;
+
+sigmaT[mu_,nu_]:= I/2 (Ga[mu].Ga[nu]-Ga[nu].Ga[mu]);
+Fmunu[mu_,nu_]:= (del[A[nu], mu] - del[A[mu], nu]);
+
+LkinSM = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[mu].DC[l,mu] + I Protonbar.Ga[mu].DC[Proton,mu];
+(*LkinSM = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[mu].DC[l,mu] + I (Protonbar.Ga[mu].ProjP.DC[Proton,mu] + Protonbar.Ga[mu].ProjM.DC[Proton,mu]);*)
+LkinnuNu = I Snubar.Ga[mu].DC[Snu,mu] + I Nubar.Ga[imu].DC[Nu,imu];
+Lkinds = 1/2 del[s1, mu] del[s1, mu];
+
+Lintds1 = ee * lbar.Ga[5].l s1;
+
+LintMDM = muNuN * (Snubar.sigmaT[mu,nu].Nu Fmunu[mu,nu] + Nubar.sigmaT[mu,nu].Snu Fmunu[mu,nu]);
+
+LQED = LkinSM + LkinnuNu + Lkinds + Lintds1 + LintMDM;
