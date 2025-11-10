@@ -156,7 +156,6 @@ sigmaT[mu_,nu_]:= I/2 (Ga[mu].Ga[nu]-Ga[nu].Ga[mu]);
 Fmunu[mu_,nu_]:= (del[A[nu], mu] - del[A[mu], nu]);
 
 LkinSM = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[mu].DC[l,mu] + I Protonbar.Ga[mu].DC[Proton,mu];
-(*LkinSM = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[mu].DC[l,mu] + I (Protonbar.Ga[mu].ProjP.DC[Proton,mu] + Protonbar.Ga[mu].ProjM.DC[Proton,mu]);*)
 LkinnuNu = I Snubar.Ga[mu].DC[Snu,mu] + I Nubar.Ga[imu].DC[Nu,imu];
 Lkinds = 1/2 del[s1, mu] del[s1, mu];
 
