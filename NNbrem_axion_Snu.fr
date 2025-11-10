@@ -19,6 +19,12 @@ M$Parameters = Join[
             InteractionOrder -> {QED,1},
             Description   ->  "Electromagnetic coupling constant (<->1/137)"
         },
+        c1 == {
+            ParameterType -> External,
+            Value         -> 1,
+            InteractionOrder -> {QED,1},
+            Description   -> "Axion coupling"
+        },
         muNuN == {
             ParameterType    -> External,
             Value            -> 1*10^-6,
@@ -98,7 +104,7 @@ M$ClassesDescription = {
     F[5] == {
         ClassName-> Proton,
         SelfConjugate    -> False,
-        Mass             -> {Mproton, 171.0}, 
+        Mass             -> {Mproton, 184.0}, 
         Width            -> 0, 
 	    QuantumNumbers   -> {Q -> 1},
         PropagatorLabel  -> "Proton",
@@ -159,7 +165,7 @@ LkinSM = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[mu].DC[l,mu] + I Proto
 LkinnuNu = I Snubar.Ga[mu].DC[Snu,mu] + I Nubar.Ga[imu].DC[Nu,imu];
 Lkinds = 1/2 del[s1, mu] del[s1, mu];
 
-Lintds1 = ee * lbar.Ga[5].l s1;
+Lintds1 = c1 * lbar.Ga[5].l s1;
 
 LintMDM = muNuN * (Snubar.sigmaT[mu,nu].Nu Fmunu[mu,nu] + Nubar.sigmaT[mu,nu].Snu Fmunu[mu,nu]);
 

@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.49
 # Mathematica version: 12.3.1 for Mac OS X ARM (64-bit) (July 24, 2021)
-# Date: Mon 10 Nov 2025 23:39:02
+# Date: Tue 11 Nov 2025 00:20:23
 
 
 
@@ -33,13 +33,21 @@ dnuc = Parameter(name = 'dnuc',
                  lhablock = 'DPINPUTS',
                  lhacode = [ 5 ])
 
+c1 = Parameter(name = 'c1',
+               nature = 'external',
+               type = 'real',
+               value = 1,
+               texname = '\\text{c1}',
+               lhablock = 'FRBlock',
+               lhacode = [ 1 ])
+
 muNuN = Parameter(name = 'muNuN',
                   nature = 'external',
                   type = 'real',
                   value = 1.e-6,
                   texname = '\\text{muNuN}',
                   lhablock = 'FRBlock',
-                  lhacode = [ 1 ])
+                  lhacode = [ 2 ])
 
 Zm = Parameter(name = 'Zm',
                nature = 'external',
@@ -47,7 +55,7 @@ Zm = Parameter(name = 'Zm',
                value = 1,
                texname = '\\text{Zm}',
                lhablock = 'FRBlock',
-               lhacode = [ 2 ])
+               lhacode = [ 3 ])
 
 ZA = Parameter(name = 'ZA',
                nature = 'external',
@@ -55,7 +63,7 @@ ZA = Parameter(name = 'ZA',
                value = 1,
                texname = '\\text{ZA}',
                lhablock = 'FRBlock',
-               lhacode = [ 3 ])
+               lhacode = [ 4 ])
 
 Zpsi = Parameter(name = 'Zpsi',
                  nature = 'external',
@@ -63,7 +71,7 @@ Zpsi = Parameter(name = 'Zpsi',
                  value = 1,
                  texname = '\\text{Zpsi}',
                  lhablock = 'FRBlock',
-                 lhacode = [ 4 ])
+                 lhacode = [ 5 ])
 
 Zxi = Parameter(name = 'Zxi',
                 nature = 'external',
@@ -71,7 +79,7 @@ Zxi = Parameter(name = 'Zxi',
                 value = 1,
                 texname = '\\text{Zxi}',
                 lhablock = 'FRBlock',
-                lhacode = [ 5 ])
+                lhacode = [ 6 ])
 
 Zg = Parameter(name = 'Zg',
                nature = 'external',
@@ -79,7 +87,7 @@ Zg = Parameter(name = 'Zg',
                value = 1,
                texname = '\\text{Zg}',
                lhablock = 'FRBlock',
-               lhacode = [ 6 ])
+               lhacode = [ 7 ])
 
 Me = Parameter(name = 'Me',
                nature = 'external',
@@ -108,7 +116,7 @@ MTA = Parameter(name = 'MTA',
 Mproton = Parameter(name = 'Mproton',
                     nature = 'external',
                     type = 'real',
-                    value = 171.,
+                    value = 184.,
                     texname = '\\text{Mproton}',
                     lhablock = 'MASS',
                     lhacode = [ 9000002 ])

@@ -118,8 +118,8 @@ C[ -F[1] , F[6] , V[1] ] == {{0, 0}, {0, 0}, {(-I)*muNuN, 0}, {(-I)*muNuN, 0}, {
 (* FA Couplings *)
 
 M$FACouplings = {
-     gc1L -> -EL,
-     gc1R -> EL,
+     gc1L -> -c1,
+     gc1R -> c1,
      gc2 -> EL,
      gc3 -> EL};
 
